@@ -7,85 +7,91 @@
 <meta name="description" content="コスメノートは毎日更新の美容・コスメ情報サイト。デパコス新作・スキンケア・プチプラ・韓国コスメなど幅広いジャンルの最新情報をお届けします。">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#faf9f7;color:#333;line-height:1.75}
-a{color:inherit;text-decoration:none}
-.site-header{background:#fff;border-bottom:1px solid #eee;padding:0 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-.site-header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-size:22px;font-weight:800;background:linear-gradient(135deg,#E8829A,#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:0.03em}
-.logo span{font-size:12px;font-weight:400;color:#999;-webkit-text-fill-color:#999;display:block;margin-top:-4px;letter-spacing:0.05em}
-.header-note{font-size:12px;color:#aaa;text-align:right}
-.hero{background:linear-gradient(135deg,#2c2c2c 0%,#3d3d3d 50%,#1a1a1a 100%);padding:64px 20px 56px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(201,168,76,0.12)}
-.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(232,130,154,0.10)}
-.hero-eyebrow{display:inline-block;border:1px solid rgba(201,168,76,0.6);color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:0.12em;padding:4px 16px;border-radius:20px;margin-bottom:20px}
-.hero h1{color:#fff;font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.3;margin-bottom:16px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#f7f6f4;color:#333;line-height:1.75;min-width:320px}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0.06)}
+.site-header{background:#fff;border-bottom:1px solid #eee;padding:0 16px;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,0.07)}
+.site-header-inner{display:flex;align-items:center;justify-content:space-between;height:52px;max-width:800px;margin:0 auto}
+.logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,#E8829A,#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-badge{font-size:11px;color:#aaa;background:#f5f5f5;padding:4px 10px;border-radius:12px}
+.hero{background:linear-gradient(160deg,#222 0%,#383838 100%);padding:36px 16px 32px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(201,168,76,0.14)}
+.hero-eyebrow{display:inline-block;border:1px solid rgba(201,168,76,0.5);color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:0.12em;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.hero h1{color:#fff;font-size:24px;font-weight:800;line-height:1.35;margin-bottom:12px}
 .hero h1 em{font-style:normal;color:#C9A84C}
-.hero-desc{color:rgba(255,255,255,0.75);font-size:15px;max-width:560px;margin:0 auto 28px;line-height:1.8}
-.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat-num{font-size:24px;font-weight:800;color:#C9A84C;display:block}
-.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-.section{padding:56px 0}
-.section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:32px}
-.section-title{font-size:22px;font-weight:800;color:#222}
-.section-sub{font-size:13px;color:#aaa}
-.section-title::before{content:'';display:inline-block;width:4px;height:22px;background:linear-gradient(180deg,#C9A84C,#E8829A);border-radius:2px;margin-right:10px;vertical-align:middle}
-.genre-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
-.genre-card{border-radius:14px;padding:20px 14px;text-align:center;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
-.genre-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.13)}
-.genre-card::before{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.12)}
-.genre-card-day{font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:0.08em;margin-bottom:6px}
-.genre-card-name{font-size:13px;font-weight:700;color:#fff;line-height:1.4}
-.genre-card-icon{font-size:24px;margin-bottom:8px;display:block}
-.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.article-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:transform .2s,box-shadow .2s}
-.article-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
-.article-card-header{padding:20px 20px 0;border-top:4px solid var(--genre-color,#ccc)}
-.article-card-badge{display:inline-block;background:var(--genre-color-light,#f0f0f0);color:var(--genre-color,#999);font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:10px}
-.article-card-title{font-size:15px;font-weight:700;color:#222;line-height:1.5;margin-bottom:6px}
-.article-card-body{padding:0 20px 20px}
-.article-card-date{font-size:11px;color:#aaa;margin-top:10px}
-a.article-card:hover .article-card-title{color:var(--genre-color,#555)}
-.archive-list{display:flex;flex-direction:column;gap:12px}
-.archive-item{background:#fff;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 6px rgba(0,0,0,0.05);transition:box-shadow .2s}
-.archive-item:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
-.archive-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.archive-info{flex:1}
-.archive-title{font-size:14px;font-weight:600;color:#222;line-height:1.4}
-.archive-meta{font-size:11px;color:#aaa;margin-top:3px}
-.archive-badge{font-size:11px;font-weight:700;padding:1px 8px;border-radius:8px;flex-shrink:0}
-.cta-banner{background:linear-gradient(135deg,#2c2c2c,#444);border-radius:20px;padding:48px 40px;text-align:center;position:relative;overflow:hidden;margin:0 0 56px}
-.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(201,168,76,0.15)}
-.cta-banner::after{content:'';position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;border-radius:50%;background:rgba(232,130,154,0.10)}
-.cta-banner h2{color:#fff;font-size:22px;font-weight:800;margin-bottom:10px}
-.cta-banner p{color:rgba(255,255,255,0.72);font-size:14px;margin-bottom:24px;line-height:1.8}
-.cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.cta-btn{display:inline-block;padding:12px 28px;border-radius:30px;font-size:14px;font-weight:700;transition:opacity .2s}
+.hero-desc{color:rgba(255,255,255,0.72);font-size:13px;line-height:1.8;margin-bottom:20px}
+.hero-stats{display:flex;justify-content:center;gap:24px}
+.hero-stat-num{font-size:22px;font-weight:800;color:#C9A84C;display:block}
+.hero-stat-label{font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:0.06em}
+.section{padding:24px 16px}
+.section-head{margin-bottom:14px}
+.section-title{font-size:17px;font-weight:800;color:#222;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';display:inline-block;width:3px;height:18px;background:linear-gradient(180deg,#C9A84C,#E8829A);border-radius:2px;flex-shrink:0}
+.section-sub{font-size:11px;color:#bbb;margin-top:3px;padding-left:11px}
+.genre-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.genre-card{border-radius:12px;padding:14px 12px;position:relative;overflow:hidden;min-height:80px;display:flex;flex-direction:column;justify-content:flex-end}
+.genre-card::before{content:'';position:absolute;top:-16px;right:-16px;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.12)}
+.genre-card-icon{font-size:20px;margin-bottom:4px}
+.genre-card-day{font-size:9px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:0.08em}
+.genre-card-name{font-size:12px;font-weight:700;color:#fff;line-height:1.35;margin-top:2px}
+.articles-list{display:flex;flex-direction:column;gap:12px}
+.article-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.07);display:block;border-left:4px solid var(--gc,#ccc)}
+.article-card-inner{padding:14px 14px 12px}
+.article-card-badge{display:inline-block;background:var(--gcl,#f0f0f0);color:var(--gc,#999);font-size:10px;font-weight:700;padding:2px 9px;border-radius:8px;margin-bottom:8px}
+.article-card-title{font-size:14px;font-weight:700;color:#222;line-height:1.5}
+.article-card-date{font-size:11px;color:#bbb;margin-top:6px}
+.article-card:active{opacity:0.8}
+.archive-list{display:flex;flex-direction:column;gap:0}
+.archive-item{background:#fff;padding:14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f0f0f0;min-height:56px}
+.archive-item:first-child{border-radius:12px 12px 0 0}
+.archive-item:last-child{border-radius:0 0 12px 12px;border-bottom:none}
+.archive-item:active{background:#f9f9f9}
+.archive-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.archive-info{flex:1;min-width:0}
+.archive-title{font-size:13px;font-weight:600;color:#222;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.archive-meta{font-size:10px;color:#bbb;margin-top:2px}
+.archive-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:7px;flex-shrink:0;white-space:nowrap}
+.cta-section{padding:20px 16px 32px}
+.cta-banner{background:linear-gradient(140deg,#2a2a2a,#3d3d3d);border-radius:16px;padding:28px 20px;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(201,168,76,0.15)}
+.cta-banner h2{color:#fff;font-size:17px;font-weight:800;margin-bottom:10px}
+.cta-banner p{color:rgba(255,255,255,0.68);font-size:13px;line-height:1.8;margin-bottom:20px}
+.cta-buttons{display:flex;flex-direction:column;gap:10px;align-items:center}
+.cta-btn{display:block;width:100%;max-width:280px;padding:14px 20px;border-radius:30px;font-size:14px;font-weight:700;text-align:center;min-height:48px;transition:opacity .15s}
+.cta-btn:active{opacity:0.8}
 .cta-btn-primary{background:#C9A84C;color:#fff}
-.cta-btn-secondary{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)}
-.cta-btn:hover{opacity:0.85}
-footer{background:#1a1a1a;padding:48px 20px 32px;color:rgba(255,255,255,0.6)}
-.footer-inner{max-width:1100px;margin:0 auto}
-.footer-logo{font-size:20px;font-weight:800;color:#C9A84C;margin-bottom:6px}
-.footer-desc{font-size:13px;margin-bottom:24px;line-height:1.7}
-.footer-genres{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.footer-genre-tag{font-size:11px;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:10px}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:11px;color:rgba(255,255,255,0.35);text-align:center}
-@media(max-width:640px){.hero{padding:48px 16px 40px}.hero-stats{gap:20px}.genre-grid{grid-template-columns:repeat(3,1fr)}.articles-grid{grid-template-columns:1fr}.cta-banner{padding:32px 20px}.section{padding:40px 0}.section-title{font-size:18px}}
+.cta-btn-secondary{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25)}
+footer{background:#1a1a1a;padding:32px 16px 28px;color:rgba(255,255,255,0.55)}
+.footer-logo{font-size:18px;font-weight:800;color:#C9A84C;margin-bottom:6px}
+.footer-desc{font-size:12px;line-height:1.75;margin-bottom:20px}
+.footer-genres{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.footer-genre-tag{font-size:11px;background:rgba(255,255,255,0.07);padding:4px 10px;border-radius:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center}
+@media(min-width:600px){
+  .hero h1{font-size:32px}
+  .genre-grid{grid-template-columns:repeat(4,1fr)}
+  .articles-list{display:grid;grid-template-columns:repeat(2,1fr)}
+  .cta-buttons{flex-direction:row;justify-content:center}
+  .cta-btn{width:auto}
+}
+@media(min-width:800px){
+  .section,.cta-section{max-width:800px;margin:0 auto;padding-left:24px;padding-right:24px}
+  .genre-grid{grid-template-columns:repeat(7,1fr)}
+  .articles-list{grid-template-columns:repeat(3,1fr)}
+}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="logo">コスメノート<span>COSME NOTE</span></div>
-    <div class="header-note">毎日更新 ✨ 美容・コスメ情報サイト</div>
+    <div class="logo">コスメノート</div>
+    <div class="header-badge">毎日更新 ✨</div>
   </div>
 </header>
 <section class="hero">
-  <div class="hero-eyebrow">DAILY UPDATE BEAUTY MEDIA</div>
-  <h1>あなたの毎日に<em>美しさ</em>を。<br>コスメノート</h1>
-  <p class="hero-desc">スキンケア・メイク・デパコス・プチプラ・韓国コスメなど、7つのジャンルを毎日ローテーション。最新のコスメ情報をわかりやすくお届けします。</p>
+  <div class="hero-eyebrow">DAILY BEAUTY MEDIA</div>
+  <h1>あなたの毎日に<br><em>美しさ</em>を。</h1>
+  <p class="hero-desc">スキンケア・メイク・デパコス・プチプラ・韓国コスメなど<br>7ジャンルを毎日ローテーションでお届け</p>
   <div class="hero-stats">
     <div class="hero-stat"><span class="hero-stat-num">7</span><span class="hero-stat-label">ジャンル</span></div>
     <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-label">記事/日</span></div>
@@ -93,77 +99,58 @@ footer{background:#1a1a1a;padding:48px 20px 32px;color:rgba(255,255,255,0.6)}
   </div>
 </section>
 <section class="section">
-  <div class="container">
-    <div class="section-header"><h2 class="section-title">ジャンル別特集</h2><span class="section-sub">曜日ごとに担当ジャンルが変わります</span></div>
-    <div class="genre-grid">
-      <div class="genre-card" style="background:linear-gradient(135deg,#E8829A,#d4607c)"><span class="genre-card-icon">🧴</span><div class="genre-card-day">MONDAY</div><div class="genre-card-name">スキンケア基礎・成分特集</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#F4845F,#e05f38)"><span class="genre-card-icon">💄</span><div class="genre-card-day">TUESDAY</div><div class="genre-card-name">メイクアップテクニック</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#52B788,#3a9970)"><span class="genre-card-icon">💰</span><div class="genre-card-day">WEDNESDAY</div><div class="genre-card-name">プチプラ最強コスメ特集</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#9B59B6,#7d3f9c)"><span class="genre-card-icon">🇰🇷</span><div class="genre-card-day">THURSDAY</div><div class="genre-card-name">韓国・海外コスメ最新情報</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#1ABC9C,#1a9e85)"><span class="genre-card-icon">💅</span><div class="genre-card-day">FRIDAY</div><div class="genre-card-name">ヘアケア・ネイル・ボディケア</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#C9A84C,#a88530)"><span class="genre-card-icon">✨</span><div class="genre-card-day">SATURDAY</div><div class="genre-card-name">デパコス・ラグジュアリー新作</div></div>
-      <div class="genre-card" style="background:linear-gradient(135deg,#3498DB,#1a72b5)"><span class="genre-card-icon">⏰</span><div class="genre-card-day">SUNDAY</div><div class="genre-card-name">時短美容・ルーティン・ライフスタイル</div></div>
-    </div>
+  <div class="section-head"><h2 class="section-title">ジャンル別特集</h2><p class="section-sub">曜日ごとにテーマが変わります</p></div>
+  <div class="genre-grid">
+    <div class="genre-card" style="background:linear-gradient(135deg,#E8829A,#d4607c)"><div class="genre-card-icon">🧴</div><div class="genre-card-day">MON</div><div class="genre-card-name">スキンケア基礎・成分特集</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#F4845F,#e05f38)"><div class="genre-card-icon">💄</div><div class="genre-card-day">TUE</div><div class="genre-card-name">メイクアップテクニック</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#52B788,#3a9970)"><div class="genre-card-icon">💰</div><div class="genre-card-day">WED</div><div class="genre-card-name">プチプラ最強コスメ特集</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#9B59B6,#7d3f9c)"><div class="genre-card-icon">🇰🇷</div><div class="genre-card-day">THU</div><div class="genre-card-name">韓国・海外コスメ最新情報</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#1ABC9C,#1a9e85)"><div class="genre-card-icon">💅</div><div class="genre-card-day">FRI</div><div class="genre-card-name">ヘアケア・ネイル・ボディケア</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#C9A84C,#a88530)"><div class="genre-card-icon">✨</div><div class="genre-card-day">SAT</div><div class="genre-card-name">デパコス・ラグジュアリー新作</div></div>
+    <div class="genre-card" style="background:linear-gradient(135deg,#3498DB,#1a72b5)"><div class="genre-card-icon">⏰</div><div class="genre-card-day">SUN</div><div class="genre-card-name">時短美容・ルーティン</div></div>
   </div>
 </section>
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="section-header"><h2 class="section-title">最新記事</h2><span class="section-sub">Latest Articles</span></div>
-    <div class="articles-grid">
-      <a class="article-card" href="2026-05-16-1.html" style="--genre-color:#C9A84C;--genre-color-light:#C9A84C18">
-        <div class="article-card-header"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年5月 デパコス注目新作BEST5｜今すぐ試したいラグジュアリーアイテム</div></div>
-        <div class="article-card-body"><div class="article-card-date">2026年5月16日（土）</div></div>
-      </a>
-      <a class="article-card" href="2026-05-16-2.html" style="--genre-color:#C9A84C;--genre-color-light:#C9A84C18">
-        <div class="article-card-header"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年 百貨店限定コスメ5選｜バイヤーが厳選した話題アイテムをチェック</div></div>
-        <div class="article-card-body"><div class="article-card-date">2026年5月16日（土）</div></div>
-      </a>
-      <a class="article-card" href="2026-05-16-3.html" style="--genre-color:#C9A84C;--genre-color-light:#C9A84C18">
-        <div class="article-card-header"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年 ラグジュアリーコスメブランドランキングTOP5｜人気・信頼・実力で徹底比較</div></div>
-        <div class="article-card-body"><div class="article-card-date">2026年5月16日（土）</div></div>
-      </a>
-    </div>
+<section class="section" style="padding-top:4px">
+  <div class="section-head"><h2 class="section-title">最新記事</h2><p class="section-sub">Latest Articles</p></div>
+  <div class="articles-list">
+    <a class="article-card" href="2026-05-16-1.html" style="--gc:#C9A84C;--gcl:#C9A84C18"><div class="article-card-inner"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年5月 デパコス注目新作BEST5｜今すぐ試したいラグジュアリーアイテム</div><div class="article-card-date">2026年5月16日（土）</div></div></a>
+    <a class="article-card" href="2026-05-16-2.html" style="--gc:#C9A84C;--gcl:#C9A84C18"><div class="article-card-inner"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年 百貨店限定コスメ5選｜バイヤーが厳選した話題アイテムをチェック</div><div class="article-card-date">2026年5月16日（土）</div></div></a>
+    <a class="article-card" href="2026-05-16-3.html" style="--gc:#C9A84C;--gcl:#C9A84C18"><div class="article-card-inner"><div class="article-card-badge">✨ デパコス・ラグジュアリー新作</div><div class="article-card-title">2026年 ラグジュアリーコスメブランドランキングTOP5｜人気・信頼・実力で徹底比較</div><div class="article-card-date">2026年5月16日（土）</div></div></a>
   </div>
 </section>
-<section class="section" style="background:#fff;padding:56px 0">
-  <div class="container">
-    <div class="section-header"><h2 class="section-title">記事アーカイブ</h2><span class="section-sub">Archive</span></div>
-    <div class="archive-list">
-      <a class="archive-item" href="2026-05-16-1.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年5月 デパコス注目新作BEST5｜今すぐ試したいラグジュアリーアイテム</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
-      <a class="archive-item" href="2026-05-16-2.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年 百貨店限定コスメ5選｜バイヤーが厳選した話題アイテムをチェック</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
-      <a class="archive-item" href="2026-05-16-3.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年 ラグジュアリーコスメブランドランキングTOP5｜人気・信頼・実力で徹底比較</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
-      <a class="archive-item" href="2026-05-15-1.html"><div class="archive-dot" style="background:#1ABC9C"></div><div class="archive-info"><div class="archive-title">2026年5月 ヘアケア・ネイル・ボディケア特集</div><div class="archive-meta">2026年5月15日（金）</div></div><div class="archive-badge" style="background:#1ABC9C18;color:#1ABC9C">ヘア・ネイル</div></a>
-      <a class="archive-item" href="2026-05-15.html"><div class="archive-dot" style="background:#aaa"></div><div class="archive-info"><div class="archive-title">2026年5月の美容トレンド最前線</div><div class="archive-meta">2026年5月15日（金）</div></div><div class="archive-badge" style="background:#f0f0f0;color:#888">コスメ全般</div></a>
-    </div>
+<section class="section" style="padding-top:4px">
+  <div class="section-head"><h2 class="section-title">記事アーカイブ</h2><p class="section-sub">Archive — 全記事一覧</p></div>
+  <div class="archive-list">
+    <a class="archive-item" href="2026-05-16-1.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年5月 デパコス注目新作BEST5｜今すぐ試したいラグジュアリーアイテム</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
+    <a class="archive-item" href="2026-05-16-2.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年 百貨店限定コスメ5選｜バイヤーが厳選した話題アイテムをチェック</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
+    <a class="archive-item" href="2026-05-16-3.html"><div class="archive-dot" style="background:#C9A84C"></div><div class="archive-info"><div class="archive-title">2026年 ラグジュアリーコスメブランドランキングTOP5｜人気・信頼・実力で徹底比較</div><div class="archive-meta">2026年5月16日（土）</div></div><div class="archive-badge" style="background:#C9A84C18;color:#C9A84C">デパコス</div></a>
+    <a class="archive-item" href="2026-05-15-1.html"><div class="archive-dot" style="background:#1ABC9C"></div><div class="archive-info"><div class="archive-title">2026年5月 ヘアケア・ネイル・ボディケア特集</div><div class="archive-meta">2026年5月15日（金）</div></div><div class="archive-badge" style="background:#1ABC9C18;color:#1ABC9C">ヘア・ネイル</div></a>
+    <a class="archive-item" href="2026-05-15.html"><div class="archive-dot" style="background:#aaa"></div><div class="archive-info"><div class="archive-title">2026年5月の美容トレンド最前線</div><div class="archive-meta">2026年5月15日（金）</div></div><div class="archive-badge" style="background:#f0f0f0;color:#888">コスメ全般</div></a>
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <div class="cta-banner">
-      <h2>📬 更新情報を受け取ろう</h2>
-      <p>コスメノートは毎日3記事を更新中。<br>新着記事を見逃さないために、ぜひブックマーク＆SNSフォローをお願いします！<br>メルマガ登録で最新コスメ情報をまとめてお届けします。</p>
-      <div class="cta-buttons">
-        <a class="cta-btn cta-btn-primary" href="mailto:naokikunimasa2@gmail.com?subject=コスメノート メルマガ登録希望">📧 メルマガ登録する</a>
-        <a class="cta-btn cta-btn-secondary" href="#">🔖 ブックマークする</a>
-      </div>
+<div class="cta-section">
+  <div class="cta-banner">
+    <h2>📬 更新情報を受け取ろう</h2>
+    <p>毎日3記事を更新中。<br>新着記事を見逃さないために<br>ブックマーク＆メルマガ登録をどうぞ！</p>
+    <div class="cta-buttons">
+      <a class="cta-btn cta-btn-primary" href="mailto:naokikunimasa2@gmail.com?subject=コスメノート メルマガ登録希望">📧 メルマガ登録する</a>
+      <a class="cta-btn cta-btn-secondary" href="javascript:void(0)" onclick="alert('ブラウザのお気に入り機能でブックマーク登録をどうぞ！')">🔖 ブックマークする</a>
     </div>
   </div>
-</section>
+</div>
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">コスメノート</div>
-    <p class="footer-desc">スキンケア・メイク・デパコス・プチプラ・韓国コスメ・ヘアケアなど<br>7つのジャンルを毎日ローテーションでお届けする美容情報サイトです。</p>
-    <div class="footer-genres">
-      <span class="footer-genre-tag">🧴 スキンケア基礎・成分特集（月）</span>
-      <span class="footer-genre-tag">💄 メイクアップテクニック（火）</span>
-      <span class="footer-genre-tag">💰 プチプラ最強コスメ特集（水）</span>
-      <span class="footer-genre-tag">🇰🇷 韓国・海外コスメ最新情報（木）</span>
-      <span class="footer-genre-tag">💅 ヘアケア・ネイル・ボディケア（金）</span>
-      <span class="footer-genre-tag">✨ デパコス・ラグジュアリー新作（土）</span>
-      <span class="footer-genre-tag">⏰ 時短美容・ルーティン（日）</span>
-    </div>
-    <div class="footer-bottom">&copy; 2026 コスメノート. All rights reserved. | 毎日更新の美容・コスメ情報サイト</div>
+  <div class="footer-logo">コスメノート</div>
+  <p class="footer-desc">スキンケア・メイク・デパコス・プチプラ・韓国コスメ・ヘアケアなど<br>7ジャンルを毎日ローテーションでお届けする美容情報サイト。</p>
+  <div class="footer-genres">
+    <span class="footer-genre-tag">🧴 スキンケア（月）</span>
+    <span class="footer-genre-tag">💄 メイク（火）</span>
+    <span class="footer-genre-tag">💰 プチプラ（水）</span>
+    <span class="footer-genre-tag">🇰🇷 韓国・海外（木）</span>
+    <span class="footer-genre-tag">💅 ヘア・ネイル（金）</span>
+    <span class="footer-genre-tag">✨ デパコス（土）</span>
+    <span class="footer-genre-tag">⏰ 時短美容（日）</span>
   </div>
+  <div class="footer-bottom">&copy; 2026 コスメノート. All rights reserved.</div>
 </footer>
 </body>
 </html>
