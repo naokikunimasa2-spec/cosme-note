@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naokikunimasa2-spec.github.io/cosme-note/sitemap.xml
